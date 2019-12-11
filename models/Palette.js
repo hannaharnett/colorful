@@ -3,14 +3,8 @@ const Schema = mongoose.Schema;
 
 //Create Colors Schema
 const ColorsSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  color: {
-    type: String,
-    required: true
-  }
+  name: String,
+  color: String
 });
 
 // Create Palette Schema
@@ -19,4 +13,4 @@ const PaletteSchema = new Schema({
   colors: [ColorsSchema]
 });
 
-module.exports = Palette = mongoose.model("palette", PaletteSchema);
+module.exports = Palette = mongoose.model("Palette", PaletteSchema);

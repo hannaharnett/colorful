@@ -20,7 +20,11 @@ router.post("/", (req, res) => {
     colors: req.body.colors
   });
 
-  newPalette.save().then(palette => res.json(palette));
+  newPalette
+    .save()
+    .then(palette => res.json(palette))
+    .catch(err => console.log(err));
+  console.log(req.body);
 });
 
 // @route   DELETE api/palettes/:id
