@@ -1,47 +1,12 @@
 import React from "react";
-import styled from "styled-components";
-
-const Root = styled.main`{
-  background-color: #fbd74a;
-  padding: 0.5rem;
-  position: relative;
-  overflow: hidden;
-`;
-
-const MiniColors = styled.div`
-  background-color: white;
-  height: 150px
-  width: 100%;
-  overflow: hidden;
-`;
-
-const Title = styled.h5`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0;
-  font-family: "Raleway", sans-serif;
-  color: black;
-  padding-top: 0.5rem;
-  font-size: 1rem;
-  position: relative;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-`;
-
-const MiniColor = styled.div`
-  height: 25%;
-  width: 20%;
-  display: inline-block;
-  margin: 0 auto;
-  position: relative;
-  margin-bottom: -3.5px;
-`;
+import { Link } from "react-router-dom";
+import styles from "../styles/MiniPalette.module.css";
 
 function MiniPalette(props) {
-  const { name, colors } = props;
+  const { name, colors, _id } = props;
   const miniColorBoxes = colors.map(color => (
-    <MiniColor
+    <div
+      className={styles["mini-colors"]}
       style={{
         backgroundColor: color.color
       }}
@@ -49,10 +14,12 @@ function MiniPalette(props) {
     />
   ));
   return (
-    <Root>
-      <MiniColors>{miniColorBoxes}</MiniColors>
-      <Title>{name}</Title>
-    </Root>
+    <div className={styles["root"]}>
+      <Link to={`/api/palettes/${_id}`}>
+        <div className={styles["mini-color-boxes"]}>{miniColorBoxes}</div>
+        <h1 className={styles["title"]}>{name}</h1>
+      </Link>
+    </div>
   );
 }
 

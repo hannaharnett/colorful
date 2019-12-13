@@ -1,61 +1,47 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import axios from "axios";
 import MiniPalette from "./MiniPalette";
-
-const Root = styled.main`
-  background-color: #dd332f;
-  height: 100vh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-`;
-
-const Container = styled.div`
-  width: 50%;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  flex-wrap: wrap;
-`;
-
-const Nav = styled.nav`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const Title = styled.h1`
-  font-family: "Playfair Display", serif;
-  color: #0c2695;
-  font-size: 3rem;
-  font-style: italic;
-`;
-
-const Palettes = styled.div`
-  box-sizing: border-box;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 30%);
-  grid-gap: 5%;
-`;
+import styles from "../styles/PaletteList.module.css";
 
 class PaletteList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      palettes: []
+    };
+    this.getAllPalettes = this.getAllPalettes.bind(this);
+  }
+  getAllPalettes = () => {
+    // load data from db into state
+    return axios
+      .get(`http://localhost:5000/api/palettes`)
+      .then(result => {
+        this.setState({
+          palettes: result.data
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
+  componentDidMount() {
+    this.getAllPalettes();
+  }
   render() {
-    const { palettes } = this.props;
+    const { palettes = [] } = this.state;
     return (
-      <Root>
-        <Container>
-          <Nav>
-            <Title>colorful</Title>
-          </Nav>
-          <Palettes>
+      <div className={styles["root"]}>
+        <div className={styles["container"]}>
+          <nav className={styles["nav"]}>
+            <h1 className={styles["title"]}>colorful</h1>
+          </nav>
+          <div className={styles["palettes"]}>
             {palettes.map(palette => (
               <MiniPalette {...palette} />
             ))}
-          </Palettes>
-        </Container>
-      </Root>
+          </div>
+        </div>
+      </div>
     );
   }
 }
