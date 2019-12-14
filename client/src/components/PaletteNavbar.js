@@ -4,15 +4,15 @@ import styles from "../styles/PaletteNavbar.module.css";
 
 class PaletteNavbar extends Component {
   render() {
-    const { name } = this.props;
+    const { name, rightLink, leftLink } = this.props;
     return (
       <div className={styles["navbar"]}>
-        <Link to="" className={styles["palette-nav-link"]}>
-          Edit Palette
+        <Link to="/api/palettes" className={styles["palette-nav-link"]}>
+          {leftLink}
         </Link>
         <h1 className={styles["title"]}>{name}</h1>
         <Link to="/api/palettes" className={styles["palette-nav-link"]}>
-          All Palettes
+          {rightLink}
         </Link>
       </div>
     );

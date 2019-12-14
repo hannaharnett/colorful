@@ -24,39 +24,30 @@ class ColorPickerForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const newColor = {
-      name: this.state.newColorName,
-      color: this.state.currentColor
+      color: this.state.currentColor,
+      name: this.state.newColorName
     };
     this.props.addNewColor(newColor);
     this.setState({ newColorName: "" });
   }
   render() {
-    const { paletteIsFull } = this.props;
     const { currentColor, newColorName } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
+      <div>
+        <form onSubmit={this.handleSubmit}>
           <ChromePicker
             color={currentColor}
             onChangeComplete={this.updateCurrentColor}
           />
-        </div>
-        <input
-          name="newColorName"
-          type="text"
-          value={newColorName}
-          onChange={this.handleChange}
-        />
-        <input
-          type="submit"
-          disabled={paletteIsFull}
-          style={{
-            backgroundColor: paletteIsFull ? "grey" : currentColor
-          }}
-        >
-          {paletteIsFull ? "Palette full" : "Add Color"}
-        </input>
-      </form>
+          <input
+            type="text"
+            name="newColorName"
+            value={newColorName}
+            onChange={this.handleChange}
+          />
+          <button type="submit">Add Color</button>
+        </form>
+      </div>
     );
   }
 }

@@ -9,13 +9,13 @@ class Palette extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
       palette: [],
-      error: null
+      editing: false
     };
     this.getPalette = this.getPalette.bind(this);
   }
-  getPalette = () => {
+  getPalette() {
+    console.log(this.props.match.params.id);
     return axios
       .get(`http://localhost:5000/api/palettes/${this.props.match.params.id}`)
       .then(result => {
@@ -26,15 +26,20 @@ class Palette extends Component {
       .catch(function(error) {
         console.log(error);
       });
-  };
+  }
   componentDidMount() {
     this.getPalette();
   }
   render() {
-    const { colors = [], name } = this.state.palette;
+    const { colors = [], name, _id } = this.state.palette;
     return (
       <div className={styles["palette"]}>
-        <PaletteNavbar name={name} />
+        <PaletteNavbar
+          name={name}
+          id={_id}
+          rightLink="Edit Palette"
+          leftLink="All Palettes"
+        />
         <div className={styles["colors"]}>
           {colors.map(color => (
             <ColorBox

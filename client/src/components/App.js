@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 
 import PaletteList from "./PaletteList";
 import Palette from "./Palette";
+import NewPaletteForm from "./NewPaletteForm";
 
 class App extends Component {
   render() {
@@ -13,6 +14,11 @@ class App extends Component {
             exact
             path="/api/palettes"
             render={routeProps => <PaletteList {...routeProps} />}
+          ></Route>
+          <Route
+            exact
+            path="/api/palettes/new"
+            render={routeProps => <NewPaletteForm {...routeProps} />}
           ></Route>
           <Route
             exact

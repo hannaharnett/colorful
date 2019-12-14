@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
 import styles from "../styles/PaletteList.module.css";
 
@@ -34,10 +35,11 @@ class PaletteList extends Component {
         <div className={styles["container"]}>
           <nav className={styles["nav"]}>
             <h1 className={styles["title"]}>colorful</h1>
+            <Link to="/api/palettes/new">New Palette</Link>
           </nav>
           <div className={styles["palettes"]}>
             {palettes.map(palette => (
-              <MiniPalette {...palette} />
+              <MiniPalette key={palettes._id} {...palette} />
             ))}
           </div>
         </div>
