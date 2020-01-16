@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
 import styles from "../styles/PaletteList.module.css";
+
+import ColorfulAPI from "./ColorfulAPI";
 
 class PaletteList extends Component {
   constructor(props) {
@@ -10,23 +11,20 @@ class PaletteList extends Component {
     this.state = {
       palettes: []
     };
-    this.getAllPalettes = this.getAllPalettes.bind(this);
   }
-  getAllPalettes = () => {
-    // load data from db into state
-    return axios
-      .get(`http://localhost:5000/api/palettes`)
-      .then(result => {
-        this.setState({
-          palettes: result.data
-        });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
   componentDidMount() {
-    this.getAllPalettes();
+    ColorfulAPI.getAllPalettes().then(data => {
+      console.log(data);
+      this.setState({ palettes: data });
+    });
+  }
+  componentDidUpdate(prevProps) {
+    // only update if the data has changed
+    if (prevProps.palettes !== this.state.palettes) {
+      ColorfulAPI.getAllPalettes().then(data => {
+        this.setState({ palettes: data });
+      });
+    }
   }
   render() {
     const { palettes = [] } = this.state;
