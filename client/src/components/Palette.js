@@ -25,8 +25,9 @@ class Palette extends Component {
         <PaletteNavbar
           name={name}
           id={_id}
-          rightLink="Delete Palette"
-          leftLink="All Palettes"
+          deleteLink="Delete Palette"
+          returnLink="All Palettes"
+          editLink="Edit Palette"
         />
         <div className={styles["colors"]}>
           {colors.map(color => (

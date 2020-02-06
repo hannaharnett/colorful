@@ -36,10 +36,10 @@ router.get("/:id", (req, res) => {
     .catch(err => res.status(404).json({ nopalettefound: "No Palette found" }));
 });
 
-// @route   PUT api/palette/:id
+// @route   PUT api/palette/edit/:id
 // @desc    Update A Palette
 // @access  Public
-router.patch("/:id", (req, res) => {
+router.put("/edit/:id", (req, res) => {
   Palette.findByIdAndUpdate(req.params.id, req.body)
     .then(palette => res.json({ msg: "Updated successfully" }))
     .catch(err =>

@@ -5,21 +5,27 @@ import ColorfulAPI from "./ColorfulAPI";
 
 class PaletteNavbar extends Component {
   render() {
-    const { name, rightLink, leftLink, id } = this.props;
+    const { name, editLink, deleteLink, returnLink, id } = this.props;
     return (
       <div className={styles["navbar"]}>
         <Link to="/api/palettes" className={styles["palette-nav-link"]}>
-          {leftLink}
+          {returnLink}
         </Link>
-        <h1 className={styles["title"]}>{name}</h1>
+        <Link
+          to={`/api/palettes/edit/${id}`}
+          className={styles["palette-nav-link"]}
+        >
+          {editLink}
+        </Link>
         <Link
           className={styles["palette-nav-link"]}
           onClick={() => {
             ColorfulAPI.deletePalette(id);
           }}
         >
-          {rightLink}
+          {deleteLink}
         </Link>
+        <h1 className={styles["title"]}>{name}</h1>
       </div>
     );
   }

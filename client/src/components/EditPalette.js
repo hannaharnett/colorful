@@ -5,7 +5,7 @@ import ColorBox from "./ColorBox";
 import styles from "../styles/NewPaletteForm.module.css";
 import ColorfulAPI from "./ColorfulAPI";
 
-class NewPaletteForm extends Component {
+class EditPalette extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,6 +15,16 @@ class NewPaletteForm extends Component {
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  componentDidMount() {
+    ColorfulAPI.getOnePalette(this.props.match.params.id).then(data => {
+      console.log(data);
+      this.setState({
+        colors: data.colors,
+        name: data.name,
+        id: data._id
+      });
+    });
   }
   addNewColor(newColor) {
     this.setState({
@@ -29,23 +39,28 @@ class NewPaletteForm extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    const data = {
+    const newData = {
       name: this.state.name,
       colors: this.state.colors
     };
 
-    ColorfulAPI.createPalette(data);
+    ColorfulAPI.updatePalette(this.state.id, newData);
 
     this.setState({
       name: "",
-      colors: []
+      colors: [],
+      id: ""
     });
   }
   render() {
     const { colors = [], name } = this.state;
     return (
       <div className={styles["root"]}>
-        <PaletteNavbar name="Create a palette" />
+        <PaletteNavbar
+          name={name}
+          returnLink="All Palettes"
+          deleteLink="Delete Palette"
+        />
         <div className={styles["container"]}>
           <div className={styles["color-picker"]}>
             <h1>Add new Color here!</h1>
@@ -63,7 +78,7 @@ class NewPaletteForm extends Component {
               name="name"
               onChange={this.handleChange}
             ></input>
-            <button type="submit">Save Palette</button>
+            <button type="submit">Save Changes</button>
           </form>
         </div>
       </div>
@@ -71,4 +86,4 @@ class NewPaletteForm extends Component {
   }
 }
 
-export default NewPaletteForm;
+export default EditPalette;
