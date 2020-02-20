@@ -34,6 +34,7 @@ class Palette extends Component {
             <ColorBox
               background={color.color}
               name={color.name}
+              color={color.color}
               key={color.name}
               id={color.name}
             />

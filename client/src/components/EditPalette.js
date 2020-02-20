@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PaletteNavbar from "./PaletteNavbar";
 import ColorPickerForm from "./ColorPickerForm";
-import ColorBox from "./ColorBox";
+import ModifyColorBox from "./ModifyColorBox";
 import styles from "../styles/NewPaletteForm.module.css";
 import ColorfulAPI from "./ColorfulAPI";
 
@@ -14,6 +14,7 @@ class EditPalette extends Component {
     };
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.removeColor = this.removeColor.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
@@ -35,6 +36,11 @@ class EditPalette extends Component {
     e.preventDefault();
     this.setState({
       [e.target.name]: e.target.value
+    });
+  }
+  removeColor(colorName) {
+    this.setState({
+      colors: this.state.colors.filter(color => color.name !== colorName)
     });
   }
   handleSubmit(e) {
@@ -68,7 +74,11 @@ class EditPalette extends Component {
           </div>
           <div className={styles["colors"]}>
             {colors.map(color => (
-              <ColorBox background={color.color} />
+              <ModifyColorBox
+                background={color.color}
+                name={color.name}
+                onClick={this.removeColor}
+              />
             ))}
           </div>
           <form onSubmit={this.handleSubmit}>
