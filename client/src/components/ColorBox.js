@@ -35,7 +35,7 @@ class ColorBox extends Component {
         onClick={this.copy(color)}
       >
         <div style={{ background }} className={styles[["color-box"]]}>
-          <div className={styles.colorBoxContent}>
+          <div className={styles["color-box-content"]}>
             <button className={styles[isLight ? "dark-text" : "copy-button"]}>
               copy
             </button>

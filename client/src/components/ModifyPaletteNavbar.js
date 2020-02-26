@@ -3,30 +3,24 @@ import { Link } from "react-router-dom";
 import styles from "../styles/PaletteNavbar.module.css";
 import ColorfulAPI from "./ColorfulAPI";
 
-class PaletteNavbar extends Component {
+class ModifyPaletteNavbar extends Component {
   render() {
-    const { name, editLink, deleteLink, returnLink, id } = this.props;
+    const { name, linkOne, linkTwo, linkThree, id } = this.props;
     return (
       <div className={styles["navbar"]}>
         <Link to="/api/palettes" className={styles["palette-nav-link"]}>
-          {returnLink}
+          {linkOne}
         </Link>
         <Link
           className={styles["palette-nav-link"]}
           onClick={() => {
-            const result = window.confirm("Are you sure you wanna delete?");
-            if (result) {
-              ColorfulAPI.deletePalette(id);
-            }
+            ColorfulAPI.deletePalette(id);
           }}
         >
-          {deleteLink}
+          {linkTwo}
         </Link>
-        <Link
-          to={`/api/palettes/edit/${id}`}
-          className={styles["palette-nav-link"]}
-        >
-          {editLink}
+        <Link to={"/api/palettes"} className={styles["palette-nav-link"]}>
+          {linkThree}
         </Link>
         <h1 className={styles["title"]}>{name}</h1>
       </div>
@@ -34,4 +28,4 @@ class PaletteNavbar extends Component {
   }
 }
 
-export default PaletteNavbar;
+export default ModifyPaletteNavbar;

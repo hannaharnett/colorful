@@ -13,11 +13,15 @@ function MiniPalette(props) {
       key={color.name}
     />
   ));
+  const truncateName = (name, maxLength) => {
+    if (name.length <= maxLength) return name;
+    return `${name.substring(0, maxLength)}...`;
+  };
   return (
     <div className={styles["root"]}>
       <Link to={`/api/palettes/${_id}`}>
         <div className={styles["mini-color-boxes"]}>{miniColorBoxes}</div>
-        <h1 className={styles["title"]}>{name}</h1>
+        <h1 className={styles["title"]}>{truncateName(name, 14)}</h1>
       </Link>
     </div>
   );

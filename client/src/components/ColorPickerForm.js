@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { ChromePicker } from "react-color";
+import styles from "../styles/ColorPickerForm.module.css";
 
 class ColorPickerForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentColor: "",
+      currentColor: "#2835c0",
       newColorName: ""
     };
     this.updateCurrentColor = this.updateCurrentColor.bind(this);
@@ -27,25 +28,44 @@ class ColorPickerForm extends Component {
       color: this.state.currentColor,
       name: this.state.newColorName
     };
-    this.props.addNewColor(newColor);
-    this.setState({ newColorName: "" });
+    const isColorNameUnique = () =>
+      this.props.colors.every(
+        ({ name }) => name.toLowerCase() !== newColor.name.toLowerCase()
+      );
+    const isColorUnique = () =>
+      this.props.colors.every(
+        ({ color }) => color.toLowerCase() !== newColor.color.toLowerCase()
+      );
+    if (isColorUnique(newColor.color) && isColorNameUnique(newColor.name)) {
+      this.props.addNewColor(newColor);
+      this.setState({ newColorName: "" });
+    } else {
+      window.alert("Both color and name must be unique!");
+    }
   }
   render() {
     const { currentColor, newColorName } = this.state;
+    const { fullPalette } = this.props;
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className={styles["form-container"]}>
           <ChromePicker
             color={currentColor}
             onChangeComplete={this.updateCurrentColor}
           />
-          <input
-            type="text"
-            name="newColorName"
-            value={newColorName}
-            onChange={this.handleChange}
-          />
-          <button type="submit">Add Color</button>
+          <div className={styles["submit-color"]}>
+            <input
+              type="text"
+              name="newColorName"
+              value={newColorName}
+              onChange={this.handleChange}
+              required
+              disabled={fullPalette}
+            />
+            <button type="submit" disabled={fullPalette}>
+              {fullPalette ? "Palette is full" : "Add color"}
+            </button>
+          </div>
         </form>
       </div>
     );

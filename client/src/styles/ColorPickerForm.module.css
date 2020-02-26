@@ -1,0 +1,50 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.submit-color {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0;
+}
+
+.submit-color input {
+  box-sizing: border-box;
+  height: 30px;
+  border: none;
+  padding: 5px 12px;
+  color: black;
+}
+
+.submit-color input:focus {
+  border: none;
+  outline: solid #dd332f;
+}
+
+.submit-color button {
+  height: 40px;
+  background-color: #fbd74a;
+  border: none;
+  margin-top: 10px;
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-size: 0.9rem;
+}
+
+.submit-color button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/*Disabled*/
+input[type="text"]:disabled {
+  background: lightgray;
+}
+
+button[disabled]:hover {
+  cursor: not-allowed;
+  text-decoration: none;
+}

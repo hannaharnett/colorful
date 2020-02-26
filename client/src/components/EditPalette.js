@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import PaletteNavbar from "./PaletteNavbar";
+import ModifyPaletteNavbar from "./ModifyPaletteNavbar";
 import ColorPickerForm from "./ColorPickerForm";
 import ModifyColorBox from "./ModifyColorBox";
 import styles from "../styles/NewPaletteForm.module.css";
 import ColorfulAPI from "./ColorfulAPI";
 
 class EditPalette extends Component {
+  static defaultProps = {
+    maxColors: 20
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -60,17 +63,36 @@ class EditPalette extends Component {
   }
   render() {
     const { colors = [], name } = this.state;
+    const { maxColors } = this.props;
+    const fullPalette = colors.length >= maxColors;
     return (
       <div className={styles["root"]}>
-        <PaletteNavbar
+        <ModifyPaletteNavbar
           name={name}
-          returnLink="All Palettes"
-          deleteLink="Delete Palette"
+          linkOne="All Palettes"
+          linkTwo="Cancel"
         />
         <div className={styles["container"]}>
-          <div className={styles["color-picker"]}>
-            <h1>Add new Color here!</h1>
-            <ColorPickerForm addNewColor={this.addNewColor} />
+          <div className={styles["color-picker-container"]}>
+            <ColorPickerForm
+              className={styles["color-picker"]}
+              addNewColor={this.addNewColor}
+              fullPalette={fullPalette}
+              colors={colors}
+            />
+            <div className={styles["form-container"]}>
+              <form onSubmit={this.handleSubmit}>
+                <div className={styles["submit"]}>
+                  <input
+                    type="text"
+                    value={name}
+                    name="name"
+                    onChange={this.handleChange}
+                  ></input>
+                  <button type="submit">Save Changes</button>
+                </div>
+              </form>
+            </div>
           </div>
           <div className={styles["colors"]}>
             {colors.map(color => (
@@ -81,15 +103,6 @@ class EditPalette extends Component {
               />
             ))}
           </div>
-          <form onSubmit={this.handleSubmit}>
-            <input
-              type="text"
-              value={name}
-              name="name"
-              onChange={this.handleChange}
-            ></input>
-            <button type="submit">Save Changes</button>
-          </form>
         </div>
       </div>
     );

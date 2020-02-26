@@ -1,6 +1,7 @@
 .root {
   background-color: #fbd74a;
   padding: 0.5rem;
+  margin-bottom: 5%;
   position: relative;
   overflow: hidden;
 }
@@ -41,5 +42,5 @@ a:hover {
   display: inline-block;
   margin: 0 auto;
   position: relative;
-  margin-bottom: -3.5px;
+  margin-bottom: -3px;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import chroma from "chroma-js";
+import { FaTrashAlt } from "react-icons/fa";
 import styles from "../styles/ColorBox.module.css";
 
 class ModifyColorBox extends Component {
@@ -9,13 +10,15 @@ class ModifyColorBox extends Component {
     return (
       <div style={{ background: background }} className={styles["edit-mode"]}>
         <div className={styles["color-box-content"]}>
-          <button
-            className={styles["delete-button"]}
-            onClick={() => onClick(name)}
-          >
-            X
-          </button>
-          <span className={styles[isDark && "dark-text"]}>{name}</span>
+          <span className={styles[isDark && "light-text"]}>
+            {name}
+            <button
+              className={styles["delete-button"]}
+              onClick={() => onClick(name)}
+            >
+              <FaTrashAlt className={styles[isDark && "light-text"]} />
+            </button>
+          </span>
         </div>
       </div>
     );
