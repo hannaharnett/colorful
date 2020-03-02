@@ -7,28 +7,32 @@ class PaletteNavbar extends Component {
   render() {
     const { name, editLink, deleteLink, returnLink, id } = this.props;
     return (
-      <div className={styles["navbar"]}>
-        <Link to="/api/palettes" className={styles["palette-nav-link"]}>
-          {returnLink}
-        </Link>
-        <Link
-          className={styles["palette-nav-link"]}
-          onClick={() => {
-            const result = window.confirm("Are you sure you wanna delete?");
-            if (result) {
-              ColorfulAPI.deletePalette(id);
-            }
-          }}
-        >
-          {deleteLink}
-        </Link>
-        <Link
-          to={`/api/palettes/edit/${id}`}
-          className={styles["palette-nav-link"]}
-        >
-          {editLink}
-        </Link>
-        <h1 className={styles["title"]}>{name}</h1>
+      <div className={styles.navbar}>
+        <div className={styles.navLinks}>
+          <Link to="/api/palettes" className={styles.paletteNavLink}>
+            {returnLink}
+          </Link>
+          <Link
+            to={id ? `/api/palettes/${id}` : "/api/palettes"}
+            className={styles.paletteNavLink}
+            onClick={() => {
+              const result = window.confirm("Are you sure you wanna delete?");
+              if (result) {
+                ColorfulAPI.deletePalette(id);
+              }
+            }}
+          >
+            {deleteLink}
+          </Link>
+          <Link
+            to={`/api/palettes/edit/${id}`}
+            className={styles.paletteNavLink}
+          >
+            {editLink}
+          </Link>
+        </div>
+
+        <h1 className={styles.title}>{name}</h1>
       </div>
     );
   }

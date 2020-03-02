@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ModifyPaletteNavbar from "./ModifyPaletteNavbar";
 import ColorPickerForm from "./ColorPickerForm";
 import ModifyColorBox from "./ModifyColorBox";
-import styles from "../styles/NewPaletteForm.module.css";
+import styles from "../styles/EditPalette.module.css";
 import ColorfulAPI from "./ColorfulAPI";
 
 class EditPalette extends Component {
@@ -13,7 +13,8 @@ class EditPalette extends Component {
     super(props);
     this.state = {
       colors: [],
-      name: ""
+      name: "",
+      id: ""
     };
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -62,27 +63,27 @@ class EditPalette extends Component {
     });
   }
   render() {
-    const { colors = [], name } = this.state;
+    const { colors = [], name, id } = this.state;
     const { maxColors } = this.props;
     const fullPalette = colors.length >= maxColors;
     return (
-      <div className={styles["root"]}>
+      <div className={styles.root}>
         <ModifyPaletteNavbar
           name={name}
           linkOne="All Palettes"
           linkTwo="Cancel"
+          id={id}
         />
-        <div className={styles["container"]}>
-          <div className={styles["color-picker-container"]}>
+        <div className={styles.container}>
+          <div className={styles.colorPickerContainer}>
             <ColorPickerForm
-              className={styles["color-picker"]}
               addNewColor={this.addNewColor}
               fullPalette={fullPalette}
               colors={colors}
             />
-            <div className={styles["form-container"]}>
+            <div className={styles.formContainer}>
               <form onSubmit={this.handleSubmit}>
-                <div className={styles["submit"]}>
+                <div className={styles.submit}>
                   <input
                     type="text"
                     value={name}
@@ -94,12 +95,13 @@ class EditPalette extends Component {
               </form>
             </div>
           </div>
-          <div className={styles["colors"]}>
+          <div className={styles.colors}>
             {colors.map(color => (
               <ModifyColorBox
                 background={color.color}
                 name={color.name}
                 onClick={this.removeColor}
+                key={color.name}
               />
             ))}
           </div>

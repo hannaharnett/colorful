@@ -34,12 +34,18 @@ class ColorBox extends Component {
         onCopy={this.changeCopyState}
         onClick={this.copy(color)}
       >
-        <div style={{ background }} className={styles[["color-box"]]}>
-          <div className={styles["color-box-content"]}>
-            <button className={styles[isLight ? "dark-text" : "copy-button"]}>
+        <div style={{ background }} className={styles.colorBox}>
+          <div className={styles.colorBoxContent}>
+            <button
+              className={
+                isLight
+                  ? `${styles.copyButton} ${styles.darkText}`
+                  : `${styles.copyButton}`
+              }
+            >
               copy
             </button>
-            <span className={styles[isDark && "light-text"]}>{name}</span>
+            <span className={isDark && styles.lightText}>{name}</span>
           </div>
         </div>
       </CopyToClipboard>

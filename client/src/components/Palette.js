@@ -21,15 +21,15 @@ class Palette extends Component {
   render() {
     const { colors = [], name, _id } = this.state.palette;
     return (
-      <div className={styles["palette"]}>
+      <div className={styles.palette}>
         <PaletteNavbar
           name={name}
           id={_id}
           deleteLink="Delete Palette"
           returnLink="All Palettes"
-          editLink="Edit Palette"
+          editLink="Update Palette"
         />
-        <div className={styles["colors"]}>
+        <div className={styles.colors}>
           {colors.map(color => (
             <ColorBox
               background={color.color}

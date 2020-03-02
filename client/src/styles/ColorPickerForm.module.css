@@ -1,16 +1,16 @@
-.form-container {
+.formContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.submit-color {
+.submitColor {
   display: flex;
   flex-direction: column;
   margin: 30px 0;
 }
 
-.submit-color input {
+.submitColor input {
   box-sizing: border-box;
   height: 30px;
   border: none;
@@ -18,14 +18,15 @@
   color: black;
 }
 
-.submit-color input:focus {
+.submitColor input:focus {
   border: none;
   outline: solid #dd332f;
 }
 
-.submit-color button {
+.submitColor button {
   height: 40px;
   background-color: #fbd74a;
+  color: #453886;
   border: none;
   margin-top: 10px;
   font-family: "Raleway", sans-serif;
@@ -34,17 +35,23 @@
   font-size: 0.9rem;
 }
 
-.submit-color button:hover {
-  text-decoration: underline;
+.submitColor button:hover {
+  font-style: italic;
   cursor: pointer;
 }
 
 /*Disabled*/
 input[type="text"]:disabled {
-  background: lightgray;
+  background: repeating-linear-gradient(
+    45deg,
+    white,
+    white 10px,
+    lightgrey 10px,
+    lightgrey 20px
+  );
 }
 
 button[disabled]:hover {
   cursor: not-allowed;
-  text-decoration: none;
+  font-style: normal;
 }

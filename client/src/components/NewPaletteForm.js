@@ -57,23 +57,23 @@ class NewPaletteForm extends Component {
     console.log(colors.length);
     console.log(maxColors);
     return (
-      <div className={styles["root"]}>
+      <div className={styles.root}>
         <ModifyPaletteNavbar
-          name="Create a palette"
+          name="New Palette"
           linkOne="All Palettes"
           linkTwo="Cancel"
         />
-        <div className={styles["container"]}>
-          <div className={styles["color-picker-container"]}>
+        <div className={styles.container}>
+          <div className={styles.colorPickerContainer}>
             <ColorPickerForm
-              className={styles["color-picker"]}
+              className={styles.colorPicker}
               addNewColor={this.addNewColor}
               fullPalette={fullPalette}
               colors={colors}
             />
-            <div className={styles["form-container"]}>
+            <div className={styles.formContainer}>
               <form onSubmit={this.handleSubmit}>
-                <div className={styles["submit"]}>
+                <div className={styles.submit}>
                   <input
                     type="text"
                     value={name}
@@ -86,7 +86,7 @@ class NewPaletteForm extends Component {
               </form>
             </div>
           </div>
-          <div className={styles["colors"]}>
+          <div className={styles.colors}>
             {colors.map(color => (
               <ModifyColorBox
                 background={color.color}

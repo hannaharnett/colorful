@@ -1,0 +1,46 @@
+.editMode {
+  height: 25%;
+  width: 20%;
+  margin: 0 auto;
+  display: inline-block;
+  position: relative;
+}
+
+.colorBoxContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.colorBoxContent span {
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  align-self: flex-end;
+}
+
+.darkText {
+  color: black;
+}
+
+.lightText {
+  color: white;
+}
+
+.deleteButton {
+  background: none;
+  border: none;
+  font-size: 1rem;
+}
+
+.deleteButton:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.deleteButton:focus {
+  outline: none;
+}

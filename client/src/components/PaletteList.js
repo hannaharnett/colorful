@@ -14,7 +14,6 @@ class PaletteList extends Component {
   }
   componentDidMount() {
     ColorfulAPI.getAllPalettes().then(data => {
-      console.log(data);
       this.setState({ palettes: data });
     });
   }
@@ -29,15 +28,19 @@ class PaletteList extends Component {
   render() {
     const { palettes = [] } = this.state;
     return (
-      <div className={styles["root"]}>
-        <div className={styles["container"]}>
-          <nav className={styles["nav"]}>
-            <h1 className={styles["title"]}>colorful</h1>
-            <Link to="/api/palettes/new">New Palette</Link>
+      <div className={styles.root}>
+        <div className={styles.container}>
+          <nav className={styles.nav}>
+            <h1 className={styles.title}>colorful</h1>
+            <div className={styles.navLinks}>
+              <Link to="/api/palettes/new" className={styles.link}>
+                create
+              </Link>
+            </div>
           </nav>
-          <div className={styles["palettes"]}>
+          <div className={styles.palettes}>
             {palettes.map(palette => (
-              <MiniPalette key={palettes._id} {...palette} />
+              <MiniPalette key={palette._id} {...palette} />
             ))}
           </div>
         </div>

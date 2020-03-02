@@ -6,7 +6,7 @@ class ColorPickerForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentColor: "#2835c0",
+      currentColor: "#453886",
       newColorName: ""
     };
     this.updateCurrentColor = this.updateCurrentColor.bind(this);
@@ -48,12 +48,12 @@ class ColorPickerForm extends Component {
     const { fullPalette } = this.props;
     return (
       <div>
-        <form onSubmit={this.handleSubmit} className={styles["form-container"]}>
+        <form onSubmit={this.handleSubmit} className={styles.formContainer}>
           <ChromePicker
             color={currentColor}
             onChangeComplete={this.updateCurrentColor}
           />
-          <div className={styles["submit-color"]}>
+          <div className={styles.submitColor}>
             <input
               type="text"
               name="newColorName"

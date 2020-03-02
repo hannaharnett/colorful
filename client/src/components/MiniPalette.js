@@ -4,13 +4,13 @@ import styles from "../styles/MiniPalette.module.css";
 
 function MiniPalette(props) {
   const { name, colors, _id } = props;
-  const miniColorBoxes = colors.map(color => (
+  const miniColorBoxes = colors.map((color, index) => (
     <div
-      className={styles["mini-colors"]}
+      className={styles.miniColors}
       style={{
         backgroundColor: color.color
       }}
-      key={color.name}
+      key={index}
     />
   ));
   const truncateName = (name, maxLength) => {
@@ -18,10 +18,10 @@ function MiniPalette(props) {
     return `${name.substring(0, maxLength)}...`;
   };
   return (
-    <div className={styles["root"]}>
+    <div className={styles.root}>
       <Link to={`/api/palettes/${_id}`}>
-        <div className={styles["mini-color-boxes"]}>{miniColorBoxes}</div>
-        <h1 className={styles["title"]}>{truncateName(name, 14)}</h1>
+        <div className={styles.miniColorBoxes}>{miniColorBoxes}</div>
+        <h1 className={styles.title}>{truncateName(name, 16)}</h1>
       </Link>
     </div>
   );
