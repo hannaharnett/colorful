@@ -16,6 +16,21 @@ Another big learning point has been to really think everything through before ju
 
 ## Screenshots
 
+![](screenshots/Homepage.png)
+Homepage
+
+![](screenshots/NewPalette.png)
+Add new palette
+
+![](screenshots/Palette.png)
+Show single palette
+
+![](screenshots/CopyColor.png)
+Copy color
+
+![](screenshots/Hover%20effect.png)
+Hover effect
+
 ## Tech/Frameworks used
 
 - MongoDB
