@@ -45,7 +45,9 @@ class ColorBox extends Component {
             >
               copy
             </button>
-            <span className={isDark && styles.lightText}>{name}</span>
+            <span className={isDark ? styles.lightText : undefined}>
+              {name}
+            </span>
           </div>
         </div>
       </CopyToClipboard>

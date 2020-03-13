@@ -96,12 +96,12 @@ class EditPalette extends Component {
             </div>
           </div>
           <div className={styles.colors}>
-            {colors.map(color => (
+            {colors.map((color, index) => (
               <ModifyColorBox
                 background={color.color}
                 name={color.name}
                 onClick={this.removeColor}
-                key={color.name}
+                key={index}
               />
             ))}
           </div>

@@ -6,6 +6,7 @@ import styles from "../styles/PaletteList.module.css";
 import ColorfulAPI from "./ColorfulAPI";
 
 class PaletteList extends Component {
+  _isMounted = false;
   constructor(props) {
     super(props);
     this.state = {
@@ -13,6 +14,7 @@ class PaletteList extends Component {
     };
   }
   componentDidMount() {
+    this._isMounted = true;
     ColorfulAPI.getAllPalettes().then(data => {
       this.setState({ palettes: data });
     });
@@ -24,6 +26,9 @@ class PaletteList extends Component {
         this.setState({ palettes: data });
       });
     }
+  }
+  componentWillUnmount() {
+    this._isMounted = false;
   }
   render() {
     const { palettes = [] } = this.state;

@@ -30,12 +30,12 @@ class Palette extends Component {
           editLink="Update Palette"
         />
         <div className={styles.colors}>
-          {colors.map(color => (
+          {colors.map((color, index) => (
             <ColorBox
               background={color.color}
               name={color.name}
               color={color.color}
-              key={color.name}
+              key={index}
               id={color.name}
             />
           ))}
