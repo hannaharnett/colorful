@@ -11,18 +11,21 @@ class PaletteNavbar extends Component {
     console.log(open)
     return (
       <div className={styles.navbar}>
+        <h1 className={styles.title}>{name}</h1>
         <div className={styles.navLinks}>
           <Link to="/api/palettes" className={styles.paletteNavLink}>
             {returnLink}
           </Link>
           {open ? (
             <Portal>
-              <div className="modal">
-                Are you sure you wanna delete this Palette?
-                <button aria-label="delete" onClick={() => ColorfulAPI.deletePalette(id)}>
-                  Yes
-                </button>
-                <button aria-label="close" onClick={toggleModal}>No</button>
+              <div className={`modal ${styles.modal}`}>
+                <h2 className={styles.modalText}>Are you sure you want to delete this Palette?</h2>
+                <div>
+                  <button className={`${styles.btn} ${styles.confirm}`} aria-label="delete" onClick={() => ColorfulAPI.deletePalette(id)}>
+                    Yes
+                  </button>
+                  <button className={`${styles.btn} ${styles.cancel}`} aria-label="close" onClick={toggleModal}>No</button>
+                </div>
               </div> 
             </Portal>
           ): null}
@@ -35,8 +38,6 @@ class PaletteNavbar extends Component {
             {editLink}
           </Link>
         </div>
-
-        <h1 className={styles.title}>{name}</h1>
       </div>
     );
   }

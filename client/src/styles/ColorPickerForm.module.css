@@ -6,38 +6,47 @@
 
 .submitColor {
   display: flex;
-  flex-direction: column;
   margin: 30px 0;
 }
 
 .submitColor input {
   box-sizing: border-box;
-  height: 30px;
+  height: 40px;
   border: none;
+  border-bottom: 1px solid #dd342f;
   padding: 5px 12px;
   color: black;
+  margin: auto 0;
 }
 
 .submitColor input:focus {
   border: none;
-  outline: solid #dd332f;
+  outline: 0.5px solid #ff9800;
 }
 
 .submitColor button {
+  border: 1px solid #dd342f;
+  background-color: #fff;
+  color: #dd342f;
+  border-radius: 50px;
   height: 40px;
-  background-color: #fbd74a;
-  color: #453886;
-  border: none;
-  margin-top: 10px;
-  font-family: "Raleway", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-size: 0.9rem;
+  width: 40px;
+  /* padding: 15px 40px; */
+  margin: 30px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: all 0.3s ease 0s;
 }
 
 .submitColor button:hover {
-  font-style: italic;
   cursor: pointer;
+  border-color:#ff9800;
+}
+
+.submitColor button:focus {
+  outline: #fff solid 0.1px;
 }
 
 /*Disabled*/

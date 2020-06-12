@@ -54,8 +54,6 @@ class NewPaletteForm extends Component {
     const { colors = [], name } = this.state;
     const { maxColors } = this.props;
     const fullPalette = colors.length >= maxColors;
-    console.log(colors.length);
-    console.log(maxColors);
     return (
       <div className={styles.root}>
         <ModifyPaletteNavbar
@@ -80,8 +78,10 @@ class NewPaletteForm extends Component {
                     name="name"
                     onChange={this.handleChange}
                     required
+                    autocomplete="off"
+                    placeholder="Palette name"
                   ></input>
-                  <button type="submit">Save Palette</button>
+                  <button type="submit">Save</button>
                 </div>
               </form>
             </div>

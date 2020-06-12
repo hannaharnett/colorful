@@ -8,6 +8,7 @@ class ModifyPaletteNavbar extends Component {
     const cancelLink = id ? `/api/palettes/${id}` : "/api/palettes";
     return (
       <div className={styles.navbar}>
+        <h1 className={styles.title}>{name}</h1>
         <div className={styles.navLinks}>
           <Link to="/api/palettes" className={styles.paletteNavLink}>
             {linkOne}
@@ -16,7 +17,6 @@ class ModifyPaletteNavbar extends Component {
             {linkTwo}
           </Link>
         </div>
-        <h1 className={styles.title}>{name}</h1>
       </div>
     );
   }

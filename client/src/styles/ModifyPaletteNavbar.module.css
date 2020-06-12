@@ -1,44 +1,38 @@
 .navbar {
-  height: 150px;
-  width: 100%;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: column;
+  padding: 50px;
 }
 
 .title {
-  width: 20%;
-  font-family: "Playfair Display", serif;
-  color: #dd332f;
-  font-size: 2.5rem;
-  font-style: italic;
-  text-transform: capitalize;
+  color: #dd342f;
+  font-size: 2.1rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding-bottom: 15px;
   padding: 0 15px 15px 0;
 }
 
-.navLinks {
-  width: 80%;
-  display: flex;
+.title::after {
+  content: " \A ─";
+  font-size: 1.6rem;;
+  white-space: pre;
+  color: #dd342f;
 }
 
 .paletteNavLink {
-  font-family: "Raleway", sans-serif;
-  text-transform: uppercase;
+  text-transform: capitalize;
+  color: #dd342f;
   font-size: 1rem;
   letter-spacing: 2.5px;
-  margin: auto 80px;
   text-decoration: none;
-}
-
-.paletteNavLink {
-  border-bottom: 1px solid #453886;
-  color: #453886;
-  padding-bottom: 0.25em;
-  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid #dd342f;
+  margin: 15px 70px 0 0;
 }
 
 .paletteNavLink:hover {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%23453886' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%23ff9800' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
   background-position: bottom;
   background-repeat: repeat-x;
   background-size: 25px;

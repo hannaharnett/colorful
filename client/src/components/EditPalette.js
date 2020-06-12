@@ -89,8 +89,9 @@ class EditPalette extends Component {
                     value={name}
                     name="name"
                     onChange={this.handleChange}
+                    placeholder="Palette name"
                   ></input>
-                  <button type="submit">Save Changes</button>
+                  <button type="submit">Save</button>
                 </div>
               </form>
             </div>

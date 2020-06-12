@@ -34,15 +34,15 @@ class PaletteList extends Component {
     const { palettes = [] } = this.state;
     return (
       <div className={styles.root}>
-        <div className={styles.container}>
-          <nav className={styles.nav}>
-            <h1 className={styles.title}>colorful</h1>
+        <nav className={styles.nav}>
+            <h1 className={styles.title}>COLORFUL</h1>
             <div className={styles.navLinks}>
               <Link to="/api/palettes/new" className={styles.link}>
-                create
+                Create
               </Link>
             </div>
           </nav>
+        <div className={styles.container}>
           <div className={styles.palettes}>
             {palettes.map(palette => (
               <MiniPalette key={palette._id} {...palette} />
