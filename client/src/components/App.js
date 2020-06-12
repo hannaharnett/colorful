@@ -14,22 +14,21 @@ class App extends Component {
           <Route
             exact
             path="/api/palettes"
-            render={routeProps => <PaletteList {...routeProps} />}
-          ></Route>
+          >
+            <PaletteList />
+          </Route>
           <Route
-            exact
             path="/api/palettes/new"
-            render={routeProps => <NewPaletteForm {...routeProps} />}
-          ></Route>
+          >
+            <NewPaletteForm />
+          </Route>
           <Route
-            exact
-            path="/api/palettes/:id"
-            render={routeProps => <Palette {...routeProps} />}
-          ></Route>
-          <Route
-            exact
             path="/api/palettes/edit/:id"
             render={routeProps => <EditPalette {...routeProps} />}
+          ></Route>
+          <Route
+            path="/api/palettes/:id"
+            render={routeProps => <Palette {...routeProps} />}
           ></Route>
         </Switch>
       </div>
