@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import ColorBox from "./ColorBox";
 import styles from "../styles/Palette.module.css";
-import PaletteNavbar from "./PaletteNavbar";
+import Portal from './Portal';
+import Navbar from './Navbar';
 import ColorfulAPI from "./ColorfulAPI";
 
 class Palette extends Component {
@@ -24,17 +26,28 @@ class Palette extends Component {
   }
   render() {
     const { colors = [], name, _id } = this.state.palette;
+    const { showModal } = this.state;
+
     return (
       <div className={styles.palette}>
-        <PaletteNavbar
-          open={this.state.showModal}
-          toggleModal={this.toggleModal}
-          name={name}
-          id={_id}
-          deleteLink="Delete Palette"
-          returnLink="All Palettes"
-          editLink="Update Palette"
-        />
+        <Navbar title={name}>
+          <Link to="/api/palettes">All palettes</Link>
+          <Link to={_id ? `/api/palettes/${_id}` : "/api/palettes"} onClick={this.toggleModal}>Delete palette</Link>
+          {showModal ? (
+            <Portal>
+            <div className={`modal ${styles.modal}`}>
+                <h2 className={styles.modalText}>Are you sure you want to delete this Palette?</h2>
+                <div>
+                <button className={`${styles.btn} ${styles.confirm}`} aria-label="delete" onClick={() => ColorfulAPI.deletePalette(_id)}>
+                    Yes
+                </button>
+                <button className={`${styles.btn} ${styles.cancel}`} aria-label="close" onClick={this.toggleModal}>No</button>
+                </div>
+            </div> 
+            </Portal>
+        ) : null}
+          <Link to={`/api/palettes/edit/${_id}`}>Edit palette</Link>
+        </Navbar>
         <div className={styles.colors}>
           {colors.map((color, index) => (
             <ColorBox

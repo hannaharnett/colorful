@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import ModifyPaletteNavbar from "./ModifyPaletteNavbar";
+import { Link } from 'react-router-dom';
 import ColorPickerForm from "./ColorPickerForm";
 import ModifyColorBox from "./ModifyColorBox";
 import styles from "../styles/NewPaletteForm.module.css";
 import ColorfulAPI from "./ColorfulAPI";
+import Navbar from "./Navbar";
 
 class NewPaletteForm extends Component {
   static defaultProps = {
@@ -56,11 +57,9 @@ class NewPaletteForm extends Component {
     const fullPalette = colors.length >= maxColors;
     return (
       <div className={styles.root}>
-        <ModifyPaletteNavbar
-          name="New Palette"
-          linkOne="All Palettes"
-          linkTwo="Cancel"
-        />
+        <Navbar title="New palette">
+          <Link to="/api/palettes">Cancel</Link>
+        </Navbar>
         <div className={styles.container}>
           <div className={styles.colorPickerContainer}>
             <ColorPickerForm

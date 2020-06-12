@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
+import Navbar from './Navbar';
 import styles from "../styles/PaletteList.module.css";
 
 import ColorfulAPI from "./ColorfulAPI";
@@ -34,14 +35,17 @@ class PaletteList extends Component {
     const { palettes = [] } = this.state;
     return (
       <div className={styles.root}>
-        <nav className={styles.nav}>
+        <Navbar title="colorful" >
+          <Link to="/api/palettes/new">Create</Link>
+        </Navbar>
+        {/* <nav className={styles.nav}>
             <h1 className={styles.title}>COLORFUL</h1>
             <div className={styles.navLinks}>
               <Link to="/api/palettes/new" className={styles.link}>
                 Create
               </Link>
             </div>
-          </nav>
+          </nav> */}
         <div className={styles.container}>
           <div className={styles.palettes}>
             {palettes.map(palette => (
