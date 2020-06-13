@@ -7,3 +7,12 @@
 .colors {
   height: 90%;
 }
+
+.modalContainer {
+  flex-direction: column;
+}
+
+.modalButtons button {
+  margin: 50px 15px;
+}
+

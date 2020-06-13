@@ -5,6 +5,7 @@ import ModifyColorBox from "./ModifyColorBox";
 import styles from "../styles/NewPaletteForm.module.css";
 import ColorfulAPI from "./ColorfulAPI";
 import Navbar from "./Navbar";
+import Button from './Button';
 
 class NewPaletteForm extends Component {
   static defaultProps = {
@@ -63,7 +64,6 @@ class NewPaletteForm extends Component {
         <div className={styles.container}>
           <div className={styles.colorPickerContainer}>
             <ColorPickerForm
-              className={styles.colorPicker}
               addNewColor={this.addNewColor}
               fullPalette={fullPalette}
               colors={colors}
@@ -79,8 +79,8 @@ class NewPaletteForm extends Component {
                     required
                     autocomplete="off"
                     placeholder="Palette name"
-                  ></input>
-                  <button type="submit">Save</button>
+                  />
+                  <Button text="Save" filled />
                 </div>
               </form>
             </div>

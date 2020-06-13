@@ -5,6 +5,7 @@ import ModifyColorBox from "./ModifyColorBox";
 import styles from "../styles/EditPalette.module.css";
 import ColorfulAPI from "./ColorfulAPI";
 import Navbar from "./Navbar";
+import Button from './Button';
 
 class EditPalette extends Component {
   static defaultProps = {
@@ -90,7 +91,7 @@ class EditPalette extends Component {
                     onChange={this.handleChange}
                     placeholder="Palette name"
                   ></input>
-                  <button type="submit">Save</button>
+                  <Button text="Save" filled />
                 </div>
               </form>
             </div>

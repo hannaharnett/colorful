@@ -4,6 +4,7 @@ import ColorBox from "./ColorBox";
 import styles from "../styles/Palette.module.css";
 import Portal from './Portal';
 import Navbar from './Navbar';
+import Button from './Button';
 import ColorfulAPI from "./ColorfulAPI";
 
 class Palette extends Component {
@@ -35,13 +36,11 @@ class Palette extends Component {
           <Link to={_id ? `/api/palettes/${_id}` : "/api/palettes"} onClick={this.toggleModal}>Delete palette</Link>
           {showModal ? (
             <Portal>
-            <div className={`modal ${styles.modal}`}>
-                <h2 className={styles.modalText}>Are you sure you want to delete this Palette?</h2>
-                <div>
-                <button className={`${styles.btn} ${styles.confirm}`} aria-label="delete" onClick={() => ColorfulAPI.deletePalette(_id)}>
-                    Yes
-                </button>
-                <button className={`${styles.btn} ${styles.cancel}`} aria-label="close" onClick={this.toggleModal}>No</button>
+            <div className={`modal ${styles.modalContainer}`}>
+                <h2>Are you sure you want to delete this Palette?</h2>
+                <div className={styles.modalButtons}>
+                  <Button text="Yes" onClick={() => ColorfulAPI.deletePalette(_id)} filled />
+                  <Button text="No" onClick={this.toggleModal} />
                 </div>
             </div> 
             </Portal>
