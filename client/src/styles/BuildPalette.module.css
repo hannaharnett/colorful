@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 50px;
+  }
+  
+  .colors {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .colorPickerContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 225px;
+  }
+  
+  .submit {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0;
+  }
+  
+  .submit input {
+    box-sizing: border-box;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid #dd342f;
+    padding: 5px 12px;
+    color: black;
+  }
+  
+  .submit input:focus {
+    outline: 0.5px solid #ff9800;
+    border: none;
+  }

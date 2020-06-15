@@ -20,14 +20,6 @@ class PaletteList extends Component {
       this.setState({ palettes: data });
     });
   }
-  componentDidUpdate(prevProps) {
-    // only update if the data has changed
-    if (prevProps.palettes !== this.state.palettes) {
-      ColorfulAPI.getAllPalettes().then(data => {
-        this.setState({ palettes: data });
-      });
-    }
-  }
   componentWillUnmount() {
     this._isMounted = false;
   }
