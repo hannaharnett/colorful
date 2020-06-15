@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { FaTrashAlt } from "react-icons/fa";
-import chroma from 'chroma-js';
+import { isBackgroundLight } from './helperFunctions';
 import styles from "../styles/ColorBox.module.css";
 
 class ModifyColorBox extends Component {
   render() {
     const { background, name, onClick } = this.props;
-    const isLight = chroma(background).luminance() >= 0.5; 
+    const isLight = isBackgroundLight(background);
     return (
       <div style={{ background: background }} className={styles.colorBox}>
         <div className={styles.colorBoxContent}>

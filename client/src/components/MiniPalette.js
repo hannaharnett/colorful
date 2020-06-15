@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {truncateName} from './helperFunctions';
-import chroma from "chroma-js";
+import { isBackgroundLight } from './helperFunctions';
 import styles from "../styles/MiniPalette.module.css";
 
 function MiniPalette(props) {
@@ -16,7 +16,7 @@ function MiniPalette(props) {
     />
   ));
   const background = colors[0].color;
-  const isLight = chroma(background).luminance() >= 0.5;  
+  const isLight = isBackgroundLight(background);
 
   return (
     <div className={styles.root} style={{ backgroundColor: background}} >

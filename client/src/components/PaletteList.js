@@ -30,14 +30,6 @@ class PaletteList extends Component {
         <Navbar title="colorful" >
           <Link to="/api/palettes/new">Create</Link>
         </Navbar>
-        {/* <nav className={styles.nav}>
-            <h1 className={styles.title}>COLORFUL</h1>
-            <div className={styles.navLinks}>
-              <Link to="/api/palettes/new" className={styles.link}>
-                Create
-              </Link>
-            </div>
-          </nav> */}
         <div className={styles.container}>
           <div className={styles.palettes}>
             {palettes.map(palette => (

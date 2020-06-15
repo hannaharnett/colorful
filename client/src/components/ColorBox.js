@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import chroma from 'chroma-js';
+import { isBackgroundLight } from './helperFunctions';
 import Portal from './Portal';
 import styles from "../styles/ColorBox.module.css";
 
@@ -19,7 +19,7 @@ class ColorBox extends Component {
     const { background, name, color } = this.props;
     const {copied} = this.state
 
-    const isLight = chroma(background).luminance() >= 0.5;   
+    const isLight = isBackgroundLight(background);   
     return (
       <CopyToClipboard
         text={color}
