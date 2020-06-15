@@ -49,3 +49,18 @@
 .lightText {
   color: white;
 }
+
+/******* MODIFY COLORBOX ************/
+
+.deleteButton {
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  margin: 0 3px;
+}
+
+.deleteButton:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
