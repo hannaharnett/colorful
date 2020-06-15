@@ -71,7 +71,7 @@ class ColorPickerForm extends Component {
               onChange={this.handleChange}
               required
               disabled={fullPalette}
-              autocomplete="off"
+              autoComplete="off"
               placeholder={fullPalette ? "Palette is full" : "Color name"}
             />
             <button type="submit" disabled={fullPalette}>
