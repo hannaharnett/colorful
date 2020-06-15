@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //DB config
-const db = process.env.MONGO_URI;
+const db = process.env.MONGO_URI || process.env.MONGO_USER;
 
 // Connect to MongoDB
 mongoose
