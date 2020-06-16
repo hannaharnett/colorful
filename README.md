@@ -12,24 +12,25 @@ Starting this project I was excited to learn a lot of new things and get better 
 
 There was frustration and going back to re-reading documents the first weeks working on understanding the basics, like how does a server work, why use express with node, what’s a schema etc.
 
-Another big learning point has been to really think everything through before jumping into it. Because I did not plan and design every aspect and page on the app up front, I ended up wasting hours changing and re-doing components once it started to grow.
-
 ## Screenshots
 
 ![](screenshots/Homepage.png)
 Homepage
 
-![](screenshots/NewPalette.png)
+![](screenshots/HomepageHover.png)
+Hover Palette
+
+![](screenshots/CreatePalette.png)
 Add new palette
 
-![](screenshots/Palette.png)
+![](screenshots/ViewPalette.png)
 Show single palette
 
-![](screenshots/CopyColor.png)
-Copy color
+![](screenshots/DeleteModal.png)
+Delete Modal
 
-![](screenshots/Hover%20effect.png)
-Hover effect
+![](screenshots/EditPalette.png)
+Edit Palette
 
 ## Tech/Frameworks used
 
@@ -42,9 +43,14 @@ Hover effect
 
 - Manages related data through complex forms and RESTful routes.
 - Designed database schema and stored data using MongoDB and mongoose.
+- Uses React Portal to show modal when copying and delete confirmation.
 
 ## Credit
 
 Hover styles where inspired by a post on CSS-tricks:
 
 https://css-tricks.com/having-fun-with-link-hover-effects/
+
+Design inspired by:
+
+https://www.malikafavre.com/
