@@ -1,4 +1,4 @@
-## Coloful
+## Colorful
 
 Colorful is a CRUD single-page-application built with React where you can create, update and delete color palettes.
 
