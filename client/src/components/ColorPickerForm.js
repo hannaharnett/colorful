@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { ChromePicker } from "react-color";
-import Portal from './Portal';
+import Modal from './Modal';
 import styles from "../styles/ColorPickerForm.module.css";
 
 class ColorPickerForm extends Component {
@@ -42,22 +42,22 @@ class ColorPickerForm extends Component {
       this.props.addNewColor(newColor);
       this.setState({ newColorName: "" });
     } else {
-      this.setState({duplicates: true}, () => {
-        setTimeout(() => this.setState({duplicates: false}), 1600)
+      this.setState({ duplicates: true }, () => {
+        setTimeout(() => this.setState({ duplicates: false }), 3000)
       });
     }
   }
   render() {
-    const { currentColor, newColorName } = this.state;
+    const { currentColor, newColorName, duplicates } = this.state;
     const { fullPalette } = this.props;
     return (
       <div>
-        {this.state.duplicates ? (<Portal>
-          <div className="modal">
-            <h1>Both and name and color must be unique!</h1>
-          </div>
-        </Portal>) : null}
-        
+        {duplicates ? (
+          <Modal onModalClose={() => this.setState({ duplicates: false })}>
+            <h1>Both name and color must be unique!</h1>
+          </Modal>
+        ) : null}
+
         <form onSubmit={this.handleSubmit} className={styles.formContainer}>
           <ChromePicker
             color={currentColor}
@@ -74,7 +74,7 @@ class ColorPickerForm extends Component {
               autoComplete="off"
               placeholder={fullPalette ? "Palette is full" : "Color name"}
             />
-            <button type="submit" disabled={fullPalette}>
+            <button type="submit" disabled={fullPalette} aria-label="Add color">
               +
             </button>
           </div>

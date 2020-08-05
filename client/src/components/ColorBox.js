@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { isBackgroundLight } from './helperFunctions';
-import Portal from './Portal';
+import Modal from './Modal';
 import styles from "../styles/ColorBox.module.css";
 
 class ColorBox extends Component {
@@ -17,22 +17,20 @@ class ColorBox extends Component {
   }
   render() {
     const { background, name, color } = this.props;
-    const {copied} = this.state
+    const { copied } = this.state
 
-    const isLight = isBackgroundLight(background);   
+    const isLight = isBackgroundLight(background);
     return (
       <CopyToClipboard
         text={color}
         onCopy={this.changeCopyTimer}
       >
         <div style={{ background }} className={styles.colorBox}>
-        {copied ? (
-          <Portal>
-            <div className="modal">
+          {copied ? (
+            <Modal>
               <h1>{`${color}`}</h1>
-            </div>
-          </Portal>) 
-        : null }
+            </Modal>
+          ) : null}
           <div className={styles.colorBoxContent}>
             <button
               className={`
@@ -42,7 +40,7 @@ class ColorBox extends Component {
             >
               copy
             </button>
-            <span className={isLight ?`${styles.darkText}` : `${styles.lightText}` }>
+            <span className={isLight ? `${styles.darkText}` : `${styles.lightText}`}>
               {name}
             </span>
           </div>

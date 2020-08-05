@@ -1,0 +1,28 @@
+.modalContainer {
+    z-index: 999;
+    position: absolute; 
+    top: 50%;
+    left: 50%;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    animation: show .4s ease forwards;
+    background:rgba(255, 255, 255, 0.9);
+    color: #dd342f;
+    padding: 1rem;
+}
+
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+@keyframes show {
+    to {
+    -webkit-transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1);
+    }
+}

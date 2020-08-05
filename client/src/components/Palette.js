@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import ColorBox from "./ColorBox";
 import styles from "../styles/Palette.module.css";
-import Portal from './Portal';
+import Modal from './Modal';
 import Navbar from './Navbar';
 import Button from './Button';
 import ColorfulAPI from "./ColorfulAPI";
@@ -17,13 +17,13 @@ class Palette extends Component {
     this.toggleModal = this.toggleModal.bind(this);
   }
   componentDidMount() {
-    ColorfulAPI.getOnePalette(this.props.match.params.id).then(data => {
-      console.log(data);
-      this.setState({ palette: data });
-    });
+    ColorfulAPI.getOnePalette(this.props.match.params.id)
+      .then(data => {
+        this.setState({ palette: data });
+      });
   }
   toggleModal() {
-    this.setState({showModal: !this.state.showModal})
+    this.setState({ showModal: !this.state.showModal })
   }
   render() {
     const { colors = [], name, _id } = this.state.palette;
@@ -34,19 +34,17 @@ class Palette extends Component {
         <Navbar title={name}>
           <Link to="/api/palettes">All palettes</Link>
           <Link to={_id ? `/api/palettes/${_id}` : "/api/palettes"} onClick={this.toggleModal}>Delete palette</Link>
-          {showModal ? (
-            <Portal>
-            <div className={`modal ${styles.modalContainer}`}>
-                <h2>Are you sure you want to delete this Palette?</h2>
-                <div className={styles.modalButtons}>
-                  <Button text="Yes" onClick={() => ColorfulAPI.deletePalette(_id)} filled />
-                  <Button text="No" onClick={this.toggleModal} />
-                </div>
-            </div> 
-            </Portal>
-        ) : null}
           <Link to={`/api/palettes/edit/${_id}`}>Edit palette</Link>
         </Navbar>
+        {showModal ? (
+          <Modal onModalClose={this.toggleModal}>
+            <h1>Are you sure you want to delete this Palette?</h1>
+            <div className={styles.modalButtons}>
+              <Button text="Yes" onClick={() => ColorfulAPI.deletePalette(_id)} filled />
+              <Button text="No" onClick={this.toggleModal} />
+            </div>
+          </Modal>
+        ) : null}
         <div className={styles.colors}>
           {colors.map((color, index) => (
             <ColorBox
