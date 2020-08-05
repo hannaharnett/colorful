@@ -3,8 +3,9 @@
   border: none;
 }
 
-.miniLink {
+.root a {
   height: 100%;
+  text-decoration: none;
 }
 
 .miniPaletteContent {
@@ -15,12 +16,17 @@
   justify-content: center;
 }
 
+.miniPaletteContent:focus-within .title {
+  background-color: rgba(255, 255, 255, .8);
+  color: #000;
+  border: 1px solid black;
+}
+
 .miniColorBoxes {
   overflow: hidden;
   width: 100%;
   height: 100%;
   background: none;
-  outline: none;
   border: none;
   opacity: 0;
 }
@@ -49,10 +55,6 @@
   letter-spacing: 2.5px;
   bottom: 50%;
   margin-bottom: -20px;
-}
-
-.root a {
-  text-decoration: none;
 }
 
 .miniColors {

@@ -31,7 +31,6 @@
   border-radius: 50px;
   height: 40px;
   width: 40px;
-  /* padding: 15px 40px; */
   margin: 30px 10px;
   text-align: center;
   text-decoration: none;
@@ -43,10 +42,6 @@
 .submitColor button:hover {
   cursor: pointer;
   border-color:#ff9800;
-}
-
-.submitColor button:focus {
-  outline: #fff solid 0.1px;
 }
 
 /*Disabled*/

@@ -32,6 +32,7 @@
   grid-auto-rows: 1fr;
 }
 
+/* makes sure each minipalette fills a square */
 .palettes::before {
   content: '';
   width: 0;
@@ -40,6 +41,7 @@
   grid-column: 1 / 1;
 }
 
+/* resets to it's default, which is to span only the first column */
 .palettes > *:first-child {
   grid-row: 1 / 1;
   grid-column: 1 / 1;
