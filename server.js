@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //DB config
-const db = process.env.MONGO_URI || process.env.MONGO_USER;
+const db = process.env.MONGO_URI || "mongodb://localhost:27017/palettes";
 
 // Connect to MongoDB
 mongoose
