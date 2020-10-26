@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { truncateName } from './helperFunctions';
-import { isBackgroundLight } from './helperFunctions';
+import { isBackgroundLight, truncateName } from '../utils/helperFunctions';
 import styles from "../styles/MiniPalette.module.css";
 
 function MiniPalette(props) {
@@ -21,7 +20,7 @@ function MiniPalette(props) {
   return (
     <div className={styles.root} style={{ backgroundColor: background }} >
       <div className={styles.miniPaletteContent}>
-        <Link to={`/api/palettes/${_id}`} className={styles.miniLink} aria-label={name} >
+        <Link to={`/${_id}`} className={styles.miniLink} aria-label={name} >
           <div className={styles.miniColorBoxes}>{miniColorBoxes}</div>
         </Link>
         <span className={`${styles.title} ${isLight ? `${styles.darkText}` : `${styles.lightText}`}`}>{truncateName(name, 18)}</span>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FaTrashAlt } from "react-icons/fa";
-import { isBackgroundLight } from './helperFunctions';
+import { isBackgroundLight } from '../utils/helperFunctions';
 import styles from "../styles/ColorBox.module.css";
 
 class ModifyColorBox extends Component {

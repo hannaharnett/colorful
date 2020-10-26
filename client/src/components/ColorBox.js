@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { isBackgroundLight } from './helperFunctions';
+import { isBackgroundLight } from '../utils/helperFunctions';
 import Modal from './Modal';
 import styles from "../styles/ColorBox.module.css";
 
@@ -12,10 +12,15 @@ class ColorBox extends Component {
   }
   changeCopyTimer() {
     this.setState({ copied: true }, () => {
-      setTimeout(() => this.setState({ copied: false }), 1000);
+      this.timer = setTimeout(() => this.setState({ copied: false }), 1000);
     });
   }
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+    this.setState({ copied: false });
+  }
   render() {
+    console.log(this.timer, this.state.copied)
     const { background, name, color } = this.props;
     const { copied } = this.state
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ColorPickerForm from "./ColorPickerForm";
 import ModifyColorBox from "./ModifyColorBox";
 import styles from "../styles/BuildPalette.module.css";
-import ColorfulAPI from "./ColorfulAPI";
+import ColorfulAPI from "../utils/ColorfulAPI";
 import Button from './Button';
 import Modal from "./Modal";
 
@@ -59,7 +59,7 @@ class BuildPalette extends Component {
 
     if (this.state.colors.length === 0) {
       this.setState({ emptyPalette: true }, () => {
-        setTimeout(() => this.setState({ emptyPalette: false }), 3000);
+        this.timer = setTimeout(() => this.setState({ emptyPalette: false }), 3000);
       });
       return;
     }
@@ -72,12 +72,16 @@ class BuildPalette extends Component {
 
     this.setState({
       name: "",
-      colors: [],
+      colors: [], 
       id: ""
     });
   }
   passTitleToChild() {
     this.props.callbackFromParent(this.state.name);
+  }
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+    this.setState({ emptyPalette: false });
   }
   render() {
     const { colors = [], name, id, emptyPalette } = this.state;

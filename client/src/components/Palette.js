@@ -5,7 +5,7 @@ import styles from "../styles/Palette.module.css";
 import Modal from './Modal';
 import Navbar from './Navbar';
 import Button from './Button';
-import ColorfulAPI from "./ColorfulAPI";
+import ColorfulAPI from "../utils/ColorfulAPI";
 
 class Palette extends Component {
   constructor(props) {
@@ -20,6 +20,9 @@ class Palette extends Component {
     ColorfulAPI.getOnePalette(this.props.match.params.id)
       .then(data => {
         this.setState({ palette: data });
+      })
+      .catch(error => {
+        window.location.assign("/")
       });
   }
   toggleModal() {
@@ -32,9 +35,9 @@ class Palette extends Component {
     return (
       <div className={styles.palette}>
         <Navbar title={name}>
-          <Link to="/api/palettes">All palettes</Link>
-          <Link to={_id ? `/api/palettes/${_id}` : "/api/palettes"} onClick={this.toggleModal}>Delete palette</Link>
-          <Link to={`/api/palettes/edit/${_id}`}>Edit palette</Link>
+          <Link to="/">All palettes</Link>
+          <Link to={_id ? `/${_id}` : "/"} onClick={this.toggleModal}>Delete palette</Link>
+          <Link to={`/edit/${_id}`}>Edit palette</Link>
         </Navbar>
         {showModal ? (
           <Modal onModalClose={this.toggleModal}>

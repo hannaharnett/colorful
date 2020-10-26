@@ -43,9 +43,13 @@ class ColorPickerForm extends Component {
       this.setState({ newColorName: "" });
     } else {
       this.setState({ duplicates: true }, () => {
-        setTimeout(() => this.setState({ duplicates: false }), 3000)
+        this.timer = setTimeout(() => this.setState({ duplicates: false }), 3000)
       });
     }
+  }
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+    this.setState({ duplicates: false });
   }
   render() {
     const { currentColor, newColorName, duplicates } = this.state;

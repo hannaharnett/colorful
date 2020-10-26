@@ -4,7 +4,7 @@ import MiniPalette from "./MiniPalette";
 import Navbar from './Navbar';
 import styles from "../styles/PaletteList.module.css";
 
-import ColorfulAPI from "./ColorfulAPI";
+import ColorfulAPI from "../utils/ColorfulAPI";
 
 class PaletteList extends Component {
   _isMounted = false;
@@ -16,8 +16,10 @@ class PaletteList extends Component {
   }
   componentDidMount() {
     this._isMounted = true;
-    ColorfulAPI.getAllPalettes().then(data => {
-      this.setState({ palettes: data });
+      ColorfulAPI.getAllPalettes().then(data => {
+        if (this._isMounted) {
+          this.setState({ palettes: data });
+      }
     });
   }
   componentWillUnmount() {
@@ -28,7 +30,7 @@ class PaletteList extends Component {
     return (
       <div className={styles.root}>
         <Navbar title="colorful" >
-          <Link to="/api/palettes/new">Create</Link>
+          <Link to="/new">Create</Link>
         </Navbar>
         <div className={styles.container}>
           <div className={styles.palettes}>

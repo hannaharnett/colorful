@@ -12,8 +12,8 @@ function EditPalette(props) {
   return (
     <div className='new-and-edit-root'>
       <Navbar title={title}>
-        <Link to="/api/palettes">All palettes</Link>
-        <Link to={`/api/palettes/${id}`}>Cancel</Link>
+        <Link to="/">All palettes</Link>
+        <Link to={`/${id}`}>Cancel</Link>
       </Navbar>
       <BuildPalette callbackFromParent={titleCallback} id={id} />
     </div>

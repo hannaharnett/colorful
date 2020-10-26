@@ -7,7 +7,7 @@ function NewPaletteForm() {
   return (
     <div className='new-and-edit-root'>
       <Navbar title="New palette">
-        <Link to="/api/palettes">Cancel</Link>
+        <Link to="/">Cancel</Link>
       </Navbar>
       <BuildPalette />
     </div>
