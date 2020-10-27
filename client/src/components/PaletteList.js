@@ -33,11 +33,11 @@ class PaletteList extends Component {
           <Link to="/new">Create</Link>
         </Navbar>
         <div className={styles.container}>
-          <div className={styles.palettes}>
+          <ul className={styles.palettes}>
             {palettes.map(palette => (
-              <MiniPalette key={palette._id} {...palette} />
+              <li key={palette._id}><MiniPalette {...palette} /></li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     );

@@ -89,7 +89,7 @@ class BuildPalette extends Component {
     const fullPalette = colors.length >= maxColors;
     if (id) { this.passTitleToChild() }
     return (
-      <div className={styles.container}>
+      <div className={styles.root}>
         <div className={styles.colorPickerContainer}>
           {emptyPalette ? (
             <Modal onModalClose={() => this.setState({ emptyPalette: false })}>
@@ -118,15 +118,16 @@ class BuildPalette extends Component {
             </form>
           </div>
         </div>
-        <div className={styles.colors}>
-          {colors.map(color => (
-            <ModifyColorBox
-              background={color.color}
-              name={color.name}
-              onClick={this.removeColor}
-              key={color.name}
-            />
-          ))}
+        <div className={styles.container}>
+          <ul className={styles.colors}>
+            {colors.map(color => (
+              <li key={color.name}><ModifyColorBox
+                background={color.color}
+                name={color.name}
+                onClick={this.removeColor}
+              /></li>
+            ))}
+          </ul>
         </div>
       </div>
     );

@@ -1,17 +1,13 @@
 .colorBox {
-  height: 25%;
-  width: 20%;
-  margin: 0 auto;
-  display: inline-block;
-  position: relative;
+  position: relative;  
+  height: 100%;
 }
 
 .colorBoxContent {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
   justify-content: flex-end;
+  height: 100%;
 }
 
 .colorBoxContent span {

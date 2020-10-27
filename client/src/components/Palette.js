@@ -48,17 +48,18 @@ class Palette extends Component {
             </div>
           </Modal>
         ) : null}
-        <div className={styles.colors}>
-          {colors.map((color, index) => (
-            <ColorBox
-              open={this.state.showModal}
-              background={color.color}
-              name={color.name}
-              color={color.color}
-              key={index}
-              id={color.name}
-            />
-          ))}
+        <div className={styles.container}>
+          <ul className={styles.colors}>
+            {colors.map((color, index) => (
+              <li key={index}><ColorBox
+                open={this.state.showModal}
+                background={color.color}
+                name={color.name}
+                color={color.color}
+                id={color.name}
+              /></li>
+            ))}
+          </ul>
         </div>
       </div>
     );

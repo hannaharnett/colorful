@@ -2,10 +2,26 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: scroll;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
 }
 
 .colors {
-  height: 75vh;
+  box-sizing: border-box;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  grid-auto-rows: 1fr;
+  list-style: none;
+}
+
+.colors::after {
+  content: '';
+  padding-bottom: 50%;
 }
 
 .modalButtons {
@@ -14,6 +30,11 @@
 
 .modalButtons button {
   margin: 50px 15px;
+}
+
+/* make sure grid is 5 * 4 on larger screen */
+@media (min-width: 1600px) {
+  .colors { grid-template-columns: repeat(5, minmax(18rem, 1fr)); }
 }
 
 
