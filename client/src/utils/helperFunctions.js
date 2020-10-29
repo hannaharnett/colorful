@@ -6,5 +6,5 @@ export const truncateName = (name, maxLength) => {
 };
 
 export const isBackgroundLight = (background) => {
-  return chroma(background).luminance() >= 0.5;
+  return chroma(background).luminance() >= 0.2;
 }
