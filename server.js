@@ -6,7 +6,7 @@ const cors = require("cors");
 const path = require("path");
 
 const app = express();
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({ origin: "https://colorful-app.herokuapp.com", optionsSuccessStatus: 200 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -39,6 +39,10 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname + '/client/build/index.html'));
   });
 }
+
+app.get('*', (req, res) => {  
+  res.sendFile(path.join(__dirname+'/client/public/index.html'));
+})
 
 const port = process.env.PORT || 5000;
 
