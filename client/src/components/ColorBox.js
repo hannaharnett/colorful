@@ -20,7 +20,6 @@ class ColorBox extends Component {
     this.setState({ copied: false });
   }
   render() {
-    console.log(this.timer, this.state.copied)
     const { background, name, color } = this.props;
     const { copied } = this.state
 
