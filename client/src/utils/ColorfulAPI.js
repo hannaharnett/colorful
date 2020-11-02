@@ -24,7 +24,7 @@ export default {
       .catch(error => {
         console.log(error);
       })
-      .then(window.location.assign("/api/palettes"));
+      .then(window.location.assign("/"));
   },
   deletePalette: id => {
     return axios
@@ -33,7 +33,7 @@ export default {
       .catch(error => {
         console.log(error);
       })
-      .then(window.location.assign("/api/palettes"));
+      .then(window.location.assign("/"));
   },
   updatePalette: (id, newData) => {
     return axios
@@ -42,6 +42,6 @@ export default {
       .catch(error => {
         console.log(error);
       })
-      .then(window.location.assign("/api/palettes"));
+      .then(window.location.assign(`/${id}`));
   }
 };
