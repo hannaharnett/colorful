@@ -6,7 +6,9 @@ const cors = require("cors");
 const path = require("path");
 
 const app = express();
-app.use(cors({ origin: "https://colorful-app.herokuapp.com", optionsSuccessStatus: 200 }));
+// Url config
+const url = process.env.API_URL || true;
+app.use(cors({ origin: url }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 

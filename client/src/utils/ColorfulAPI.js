@@ -1,9 +1,11 @@
 import axios from "axios";
 
+const url = process.env.API_URL || "http://localhost:5000"
+
 export default {
   getAllPalettes: () => {
     return axios
-      .get(`https://colorful-app.herokuapp.com/api/palettes`)
+      .get(`${url}/api/palettes`)
       .then(result => result.data)
       .catch(function(error) {
         console.log(error);
@@ -11,7 +13,7 @@ export default {
   },
   getOnePalette: id => {
     return axios
-      .get(`https://colorful-app.herokuapp.com/api/palettes/${id}`)
+      .get(`${url}/api/palettes/${id}`)
       .then(result => result.data)
       .catch(function(error) {
         console.log(error);
@@ -19,7 +21,7 @@ export default {
   },
   createPalette: newData => {
     return axios
-      .post(`https://colorful-app.herokuapp.com/api/palettes/new`, newData)
+      .post(`${url}/api/palettes/new`, newData)
       .then(result => result.data, console.log("Palette Created"))
       .catch(error => {
         console.log(error);
@@ -28,7 +30,7 @@ export default {
   },
   deletePalette: id => {
     return axios
-      .delete(`https://colorful-app.herokuapp.com/api/palettes/${id}`)
+      .delete(`${url}/api/palettes/${id}`)
       .then(result => result.data, console.log("Palette Deleted"))
       .catch(error => {
         console.log(error);
@@ -37,7 +39,7 @@ export default {
   },
   updatePalette: (id, newData) => {
     return axios
-      .put(`https://colorful-app.herokuapp.com/api/palettes/edit/${id}`, newData)
+      .put(`${url}/api/palettes/edit/${id}`, newData)
       .then(result => result.data, console.log("Palette Updated"))
       .catch(error => {
         console.log(error);
